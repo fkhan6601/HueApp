@@ -47,15 +47,17 @@ Builder.load_string('''
         text: 'Auto Connect'
         id: AutoConBut
         size_hint: None, None
+        background_normal: 'greytrans2.png'
+        backgroud_color: 0.5, 0.5, 0.5, 0.2
         pos_hint: {'top': 1}
-        size_hint: .5, .25
+        size_hint: .5, .10
         on_release: root.AutoCon()    
     Button:
         text: 'Connect'         
         size_hint: None, None
         pos_hint: {'right': 1}
-        size_hint: .5, .25
-        
+        size_hint: .5, .10
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Connect'
             root.manager.transition.direction = 'left'
@@ -63,7 +65,8 @@ Builder.load_string('''
         text: 'Control screen'
         size_hint: None, None
         pos_hint: {'left': 1}
-        size_hint: .5, .25
+        size_hint: .5, .10
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Control'
             root.manager.transition.direction = 'right'
@@ -84,6 +87,7 @@ Builder.load_string('''
         text: 'Back'
         size_hint: None, None
         pos_hint: {'top': 1}
+        background_normal: 'greytrans2.png'
         size_hint: .5, .05
         on_release:
             root.manager.current = 'Main'
@@ -95,6 +99,7 @@ Builder.load_string('''
         size_hint: None, None
         pos_hint: {'Bottom': 1}
         size_hint: .5, .25
+        background_normal: 'greytrans2.png'
         on_press: root.Connecting()
         on_release: root.Con()
     Spinner:
@@ -103,6 +108,7 @@ Builder.load_string('''
         id: ConSpin
         values: root.SpinnerTest()
         pos_hint: {'center_x': 0.75, 'center_y': 0.125}
+        background_normal: 'greytrans2.png'
         size_hint: 0.5, 0.25
         
         
@@ -117,12 +123,13 @@ Builder.load_string('''
     GridLayout:
         id: Grid
         cols: 2
-        padding: [0, 60, 0, 0]
+        padding: [0, 120, 0, 0]
     Button:
         text: 'Back'
         size_hint: None, None
         pos_hint: {'top': 1}
         size_hint: .5, .05
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Main'
             root.manager.transition.direction = 'left'
@@ -145,6 +152,7 @@ Builder.load_string('''
         size_hint: None, None
         pos_hint: {'top': 1}
         size_hint: .5, .05
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Control'
             root.manager.transition.direction = 'up'
@@ -152,11 +160,12 @@ Builder.load_string('''
 
 <BrightScreen>:
     hue: random()
-    canvas:
-        Color:
-            hsv: .1, .1, .1
-        Rectangle:
-            size: self.size
+    Image:
+        source: 'darklamp.jpg'
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        allow_stretch: True
+        keep_ratio: False
     GridLayout:
         id: Bright
         cols: 2
@@ -166,16 +175,18 @@ Builder.load_string('''
         size_hint: None, None
         pos_hint: {'top': 1}
         size_hint: .5, .05
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Control'
             root.manager.transition.direction = 'up'
 <ColorScreen>:
     hue: random()
-    canvas:
-        Color:
-            hsv: .1, .1, .1
-        Rectangle:
-            size: self.size
+    Image:
+        source: 'darklamp.jpg'
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        allow_stretch: True
+        keep_ratio: False
     GridLayout:
         id: Colr
         cols: 2
@@ -185,17 +196,19 @@ Builder.load_string('''
         size_hint: None, None
         pos_hint: {'top': 1}
         size_hint: .5, .05
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Choice'
             root.manager.transition.direction = 'right'
 
 <TempScreen>:
     hue: random()
-    canvas:
-        Color:
-            hsv: .1, .1, .1
-        Rectangle:
-            size: self.size
+    Image:
+        source: 'darklamp.jpg'
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        allow_stretch: True
+        keep_ratio: False
     GridLayout:
         id: Tempr
         cols: 2
@@ -205,16 +218,18 @@ Builder.load_string('''
         size_hint: None, None
         pos_hint: {'top': 1}
         size_hint: .5, .05
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Control'
             root.manager.transition.direction = 'up'
 <TempScreen1>:
     hue: random()
-    canvas:
-        Color:
-            hsv: .1, .1, .1
-        Rectangle:
-            size: self.size
+    Image:
+        source: 'darklamp.jpg'
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        allow_stretch: True
+        keep_ratio: False
     GridLayout:
         id: Tempr
         cols: 2
@@ -224,6 +239,7 @@ Builder.load_string('''
         size_hint: None, None
         pos_hint: {'top': 1}
         size_hint: .5, .05
+        background_normal: 'greytrans2.png'
         on_release:
             root.manager.current = 'Choice'
             root.manager.transition.direction = 'left'
@@ -398,8 +414,8 @@ class ChoiceScreen(Screen):
         else:
             LightType=Label(text="Hue Color Lamps")
             self.ids.Choice.add_widget(LightType)
-            button1= Button(text='Color')
-            button2= Button(text='Temperature')
+            button1= Button(text='Color', size_hint=(.5, .10), background_normal='greytrans2.png')
+            button2= Button(text='Temperature', size_hint=(.5, .10), background_normal='greytrans2.png')
             self.ids.Choice.add_widget(button2)
             button2.bind(on_release=self.TempButton)
             self.ids.Choice.add_widget(button1)
@@ -430,7 +446,7 @@ class BrightScreen(Screen):
 
         #Create labels for sliders
         self.TempL1 = Label(text='Brightness')
-        self.TempL2 = Label(text='Duration')
+        self.TempL2 = Label(text='Transition')
         
 
         #Add labels and widgets to the screen
@@ -480,7 +496,7 @@ class TempScreen(Screen):
 
         #Create labels for sliders
         self.TempL1 = Label(text='Brightness')
-        self.TempL2 = Label(text='Duration')
+        self.TempL2 = Label(text='Transition')
         self.TempL3 = Label(text='Temperature')
 
         #Add labels and widgets to the screen
@@ -529,7 +545,7 @@ class TempScreen1(Screen):
 
         #Create labels for sliders
         self.TempL1 = Label(text='Brightness')
-        self.TempL2 = Label(text='Duration')
+        self.TempL2 = Label(text='Transition')
         self.TempL3 = Label(text='Temperature')
 
         #Add labels and widgets to the screen
@@ -573,7 +589,7 @@ class ColorScreen(Screen):
     def on_enter(self):
         Brid = Bridge(store.get('IP')['name'])
         button2= Switch(active=Brid.get_group(Light, 'on'), size_hint=(.5, .25))
-        button3= Button(text='Sunset')
+        button3= Button(text='Sunset', background_normal='greytrans2.png')
         
         self.S1 = Slider(value=round(Brid.get_group(Light, 'bri')/2.54), min=0, max=100)
         self.S2 = Slider(value=0, min=0, max=100)
@@ -581,7 +597,7 @@ class ColorScreen(Screen):
         self.S4 = Slider(value=round(Brid.get_group(Light, 'sat')), min=25, max=250)
         
         self.L1 = Label(text='Brightness')
-        self.L2 = Label(text='Duration')
+        self.L2 = Label(text='Transition')
         self.L3 = Label(text='Hue')
         self.L4 = Label(text='Saturation')
 
